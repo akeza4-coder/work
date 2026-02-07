@@ -1,0 +1,7 @@
+#!/bin/bash
+  dir=submission1.txt  dir1=submission2.txt
+if  [[ -d "$dir" & "$dir1"]]; then
+read -p "create two files inside :" 
+else 
+read -p  "create the directory  and then files"
+ 
