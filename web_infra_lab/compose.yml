@@ -1,0 +1,54 @@
+networks:
+  lablan:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
+
+services:
+  web-01:
+    build:
+      context: ./web
+      network: host
+    container_name: web-01
+    hostname: web-01
+    networks:
+      lablan:
+        ipv4_address: 172.25.0.11
+    ports:
+      - "2211:22"
+      - "8080:80"
+    cap_add:
+     - NET_ADMIN
+     - NET_RAW
+
+  web-02:
+    build:
+      context: ./web
+      network: host
+    container_name: web-02
+    hostname: web-02
+    networks:
+      lablan:
+        ipv4_address: 172.25.0.12
+    ports:
+      - "2212:22"
+      - "8081:80"
+    cap_add:
+     - NET_ADMIN
+     - NET_RAW
+
+
+  lb-01:
+    build:
+      context: ./lb
+      network: host
+    container_name: lb-01
+    hostname: lb-01
+    networks:
+      lablan:
+        ipv4_address: 172.25.0.10
+    ports:
+      - "2210:22"
+      - "8082:80"
+      - "4443:443"
