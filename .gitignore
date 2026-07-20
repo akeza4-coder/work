@@ -1,0 +1,9 @@
+.ssh/
+.cache/
+.docker/
+.bash_history
+.gitconfig
+.viminfo
+Web_infra_lab_key*
+secure_vault/
+deploy_agent_akeza4-coder/
